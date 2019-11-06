@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>ThoughtsOfMe</title>
+</head>
+<body>
+<div id="app">
+    <v-app>
+        <v-content>
+            <v-container>
+                <v-row v-for="thought in thoughts" :key="thought.id">
+                    <v-spacer></v-spacer>
+                    <v-col>
+                        <v-card >
+                            <v-card-title>{{thought.text}}</v-card-title>
+                            <v-card-subtitle>{{thought.createdAt | formatDate}}</v-card-subtitle>
+                        </v-card>
+                    </v-col>
+                    <v-spacer></v-spacer>
+                </v-row>
+
+                <v-text-field placeholder="a new thought..." v-model="text"></v-text-field>
+                <v-btn color="primary" @click.prevent="sendThought" type="submit">Send</v-btn>
+            </v-container>
+        </v-content>
+    </v-app>
+
+
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+<script src="//unpkg.com/@feathersjs/client@^4.3.0/dist/feathers.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<!--<script src="app.js"></script>-->
+<script src="app_vue.js"></script>
+</body>
+</html>
